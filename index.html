@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Key - Access System</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #090d18;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 390px;
+    padding: 30px 24px;
+    border: 1px solid #29334b;
+    border-radius: 20px;
+    background: #151c2c;
+    text-align: center;
+    box-shadow: 0 15px 50px #0008;
+}
+
+.logo {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 27px;
+    margin: 0;
+}
+
+.subtitle {
+    color: #9ca9c2;
+    font-size: 14px;
+    margin: 12px 0 25px;
+}
+
+.status {
+    padding: 16px;
+    background: #222c40;
+    border-radius: 12px;
+    color: #f5c65d;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.keybox {
+    padding: 18px;
+    background: #0d1422;
+    border: 1px solid #303d56;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    overflow-wrap: anywhere;
+}
+
+.keybox small {
+    display: block;
+    color: #9ca9c2;
+    margin-bottom: 10px;
+}
+
+#key {
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 11px;
+    background: #268b69;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button:active {
+    opacity: .8;
+}
+
+.footer {
+    color: #77849c;
+    font-size: 11px;
+    margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">🔐</div>
+
+    <h1>GET YOUR KEY</h1>
+
+    <p class="subtitle">
+        Unlock Your 24 Hours Access
+    </p>
+
+    <div class="status" id="status">
+        Waiting for reward verification...
+    </div>
+
+    <div class="keybox">
+        <small>YOUR LOGIN KEY</small>
+        <div id="key">KEY NOT AVAILABLE</div>
+    </div>
+
+    <button onclick="copyKey()">
+        COPY KEY
+    </button>
+
+    <p class="footer">
+        Secure Access System • 24 Hours
+    </p>
+
+</div>
+
+<script>
+let currentKey = "";
+
+function displayKey(key) {
+    currentKey = key;
+
+    document.getElementById("key").textContent = key;
+
+    document.getElementById("status").textContent =
+        "Reward verified successfully!";
+}
+
+function copyKey() {
+    if (!currentKey) {
+        alert("Your key is not available yet!");
+        return;
+    }
+
+    navigator.clipboard.writeText(currentKey)
+        .then(() => alert("Key copied!"))
+        .catch(() => alert("Copy failed!"));
+}
+</script>
+
+</body>
+</html>
